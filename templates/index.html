@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Image Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Image Viewer</h1>
+    <img src="/image" id="live-image" alt="Latest Image">
+    <script>
+        setInterval(() => {
+            const img = document.getElementById("live-image");
+            img.src = "/image?" + new Date().getTime(); // Bypass caching
+        }, 10000);
+    </script>
+</body>
+</html>
