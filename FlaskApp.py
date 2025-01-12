@@ -9,7 +9,7 @@ UPLOAD_FOLDER = r"c:\\Me\\Python Projects\\MirrorScreen\\uploads\\"
 IMAGE_NAME = "latest_image.jpg"
 
 tabs=3
-box = (0, 0, 278*tabs, 540)
+box = (0, 0, 278*tabs, 535)
 
 # Ensure the upload folder exists
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -21,7 +21,7 @@ def index():
 
 @app.route('/image')
 def get_image():
-    image_path = UPLOAD_FOLDER +IMAGE_NAME
+    image_path = UPLOAD_FOLDER + IMAGE_NAME
     if os.path.exists(image_path):
         return send_file(image_path)
     else:
@@ -43,13 +43,13 @@ def upload_image():
                 os.makedirs(UPLOAD_FOLDER)
 
             screenshot.save(dest_path, "JPEG")
-            print(f"Image saved at {dest_path}")
+            # print(f"Image saved at {dest_path}")
 
         except Exception as e:
             print(f"Error while saving screenshot: {e}")
 
         # Wait for 10 seconds before capturing the next screenshot
-        while time.time()-curTime<1:
+        while time.time()-curTime<2.5:
             pass
 
 
